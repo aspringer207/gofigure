@@ -1,4 +1,4 @@
-import optionMap from "./optionMap";
+import optionMap from "../optionMap";
 export class GoFigureOptions{
     constructor(
         colors = ["LightSkyBlue", "LightSalmon", "LightGreen"], 

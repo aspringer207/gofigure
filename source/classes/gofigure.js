@@ -1,14 +1,6 @@
-import svg from "../svg";
-import defs from "./defs";
-import scale from "../scale";
-import niceMax from "./nicemax";
-import sym from "../sym";
-import { GoFigureOptions } from "../gofigureoptions";
-import { myUse } from "../myUse";
-import box from "./box";
-import { vector } from "../vector";
-import attr from "./attr";
 
+import { GoFigureOptions } from "../../gofigureoptions";
+import { attr, box, defs, niceMax, scale, sym, useEl, vector } from "../functions";
 export class GoFigure {
     constructor(
         arr,
@@ -98,7 +90,7 @@ export class GoFigureBar extends GoFigure {
             ["viewBox", this.innerPad.join(' ')],
             
         ])
-        const mySymbolInstance = myUse("symbol_inset_box")
+        const mySymbolInstance = useEl("symbol_inset_box")
         attr(mySymbolInstance, [
             ["fill", this.options.colorMode === 'dark' ? "#303030" : "whitesmoke"]
         ])
