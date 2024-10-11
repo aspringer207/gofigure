@@ -1,6 +1,6 @@
 
 import { GoFigureOptions } from "../../gofigureoptions";
-import { attr, box, defs, niceMax, scale, sym, useEl, vector } from "../functions";
+import { attr, box, line, niceMax, scale, vector } from "../functions";
 export class GoFigure {
     constructor(
         arr,
@@ -49,9 +49,12 @@ export class GoFigureBar extends GoFigure {
             step,
             padding
         )
-        this.options = new GoFigureOptions(...options)
+        const ops = new GoFigureOptions(...options)
+        this.options = ops
+        this.colors = ops.colorSeries(arr);
+        this.labels = ops.labelSeries(arr);
         this.barHeights = this.data.map((x) => Number(x / this.maxY) * this.height)
-        this.barWidths = this.data.map(() => this.width / arr.length)
+        this.barWidth = this.width / arr.length 
         this.padScale = scale(padding);
         this.innerPad = this.viewBox.map((value, index)=>{
             let whiteSpace = 1 - padding / 2;
@@ -68,34 +71,61 @@ export class GoFigureBar extends GoFigure {
             return result;
         })
     }
-    yLines(){
+    yLines(svg = document.getElementById("vector")){
+        let lines = [];
         for (let s = this.step; s <= this.maxY; s + this.step) {
-            let lines = [];
+            
             lines.push(s);
-            return lines;
         }
+        lines.forEach((val)=>{
+            let l = line()
+            attr(l,
+                ["x1", 0],
+                ["x2", 100],
+                ["y1", val],
+                ["y2", val],
+                ["stroke", this.data.options.colorMode === "dark" ? "silver" : "#505050"]
+            );
+            svg.appendChild(l)
+        })
     }
-    createInsetBox(svg = vector) {
+    createVector(){
+        const svg = vector()
+        attr(svg, [
+            ["viewBox", this.viewBox],
+            ["id", "vector"]
+        ])
+        return svg;
+    }
+    createInsetBox(svg = document.getElementById('vector')) {
         const myInsetBox = box();
         attr(myInsetBox, [
             ["x", this.innerPad[0]],
             ["y", this.innerPad[1]],
             ["width", this.innerPad[2]],
             ["height", this.innerPad[3]],
-            
-        ])
-        const mySymbol = sym(myInsetBox)
-        attr(mySymbol, [
-            ["id", "symbol_inset_box"],
-            ["viewBox", this.innerPad.join(' ')],
-            
-        ])
-        const mySymbolInstance = useEl("symbol_inset_box")
-        attr(mySymbolInstance, [
             ["fill", this.options.colorMode === 'dark' ? "#303030" : "whitesmoke"]
+            
         ])
-        vector.appendChild(mySymbol);
-        vector.appendChild(mySymbolInstance);
+        svg.appendChild(myInsetBox)
+
+    }
+    createBars(svg = document.getElementById('vector')){
+        for (let idx in this.data){
+            let currentBar = box()
+        attr(currentBar,
+            [
+                ["transform-origin", `center`],
+                ["transform", `translate(${this.barWidth * idx})`],
+                ["height", this.barHeights[idx]],
+                ["width", this.barWidth],
+                ["fill", this.colors],
+
+
+            ]
+        )}
+        
+
 
     }
 
