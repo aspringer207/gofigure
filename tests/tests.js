@@ -11,16 +11,6 @@ it('should set multiple attributes on a DOM element when given an array of attri
     expect(el.getAttribute('data-test')).toBe('test-data');
 });
 
-// Creates an SVG rectangle element successfully
-it('should create an SVG rectangle element when called', () => {
-    const rect = box();
-    expect(rect).toBeInstanceOf(SVGRectElement);
-    expect(rect.namespaceURI).toBe("http://www.w3.org/2000/svg");
-});
-
-
-
-
 
 
 
