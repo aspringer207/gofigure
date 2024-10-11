@@ -1,4 +1,4 @@
-const {line} = require("./functions.cjs")
+const { line } = require("./functions.cjs")
 
 // Creates an SVG line element successfully
 it('should create an SVG line element when called', () => {
