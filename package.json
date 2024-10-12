@@ -1,6 +1,6 @@
 {
   "name": "gofigure",
-  "version": "1.0.0",
+  "version": "0",
   "description": "A tiny library for adding an SVG chart into an HTML document",
   "main": "index.js",
   "scripts": {
