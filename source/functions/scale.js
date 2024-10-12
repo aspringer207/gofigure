@@ -1,5 +1,5 @@
 
-export function scale(scale) {
+export default function scale(scale) {
     return function (m) {
         return scale * m;
     };

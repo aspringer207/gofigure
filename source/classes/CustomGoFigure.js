@@ -1,4 +1,9 @@
-import { niceMax, line, attr, vector, box } from "../functions";
+import attr from "../functions/attr";
+import line from "../functions/line";
+import niceMax from "../functions/niceMax";
+import rect from "../functions/rect";
+import vector from "../functions/vector";
+
 
 export class CustomGoFigure {
 
@@ -55,7 +60,7 @@ export class CustomGoFigure {
         return svg;
     }
     createInsetBox(svg = document.getElementById('vector')) {
-        const myInsetBox = box();
+        const myInsetBox = rect();
         attr(myInsetBox, [
             ["x", this.innerPad[0]],
             ["y", this.innerPad[1]],
@@ -68,7 +73,7 @@ export class CustomGoFigure {
     }
     createBars(svg = document.getElementById('vector')) {
         for (let idx in this.data) {
-            let currentBar = box();
+            let currentBar = rect();
             attr(currentBar,
                 [
                     ["transform-origin", `center`],

@@ -1,5 +1,5 @@
-import { ns } from "./ns";
+import { ns } from "../expressions/globals";
 
-export function line() {
+export default function line() {
     return document.createElementNS(ns, "line");
 }

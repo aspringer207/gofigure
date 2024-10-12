@@ -1,5 +1,5 @@
 
-export function optionMap(els, ops) {
+export default function optionMap(els, ops) {
     if (els.length === 0 || ops.length === 0) {
         return console.error("optionMap inputs must have at least one element each");
     }

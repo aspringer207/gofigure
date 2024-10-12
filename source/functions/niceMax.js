@@ -1,5 +1,5 @@
 
-export function niceMax(arr, step = 10) {
+export default function niceMax(arr, step = 10) {
     if (arr.length === 0) {
         return console.error("Array input must have at least one element");
     }

@@ -1,5 +1,5 @@
-import { ns } from "./ns";
+import { ns } from "../expressions/globals";
 
-export function vector() {
+export default function vector() {
     return document.createElementNS(ns, "svg");
 }

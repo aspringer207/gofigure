@@ -1,5 +1,5 @@
-import { ns } from "./ns";
+import { ns } from "../expressions/globals.js";
 
-export function defs() {
+export default function defs() {
     return document.createElementNS(ns, "defs");
 }

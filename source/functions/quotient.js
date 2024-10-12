@@ -1,5 +1,5 @@
 
-export function quotient(x) {
+export default function quotient(x) {
     if (x === 0) {
         console.warn("The requested function would always return zero");
     }

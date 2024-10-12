@@ -1,5 +1,5 @@
 
-export function attr(el, arr) {
+export default function attr(el, arr) {
     for (let p in arr) {
         let pair = arr[p];
         let attrKey = pair[0];
