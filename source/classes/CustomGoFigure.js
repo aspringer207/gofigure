@@ -1,34 +1,32 @@
-import { vector } from "../functions/vector.js";
-import { niceMax } from "../functions/niceMax.js";
-import { line } from "../functions/line.js";
-import { box } from "../box.js";
-import { attr } from "../functions/attr.js";
-import { GoFigureOptions } from "./GoFigureOptions.js";
+import { niceMax, line, attr, vector, box } from "../functions";
 
-export class GoFigure {
+export class CustomGoFigure {
 
-    padding = 0.75;
-    myX = 0;
-    myY = 0;
-    viewportWidth = 100;
-    viewportHeight = 100;
-    viewBox = [0, 0, 100, 100];
-    minX = 0;
-    maxX = 100;
-    minY = 0;
     constructor(
         arr,
-        options = [["LightSkyBlue", "LightSalmon", "LightGreen"], "", 0, "preset"],
+        step = 10,
+        padding = 0.75,
+        viewBox = [0, 0, 100, 100],
+        xAxis = [0, 100],
+        yAxis = [0, 100],
         step = 10
     ) {
-        const ops = GoFigureOptions(...options);
-        this.options = ops;
-        this.colors = ops.colorSeries(arr);
-        this.labels = ops.labelSeries(arr);
+        this.viewBox = viewBox;
+        this.viewportStartX = viewBox[0];
+        this.viewPortStartY = viewBox[1];
+        this.viewportWidth = viewBox[2];
+        this.viewportHeight = viewBox[3];
         this.data = arr.map((x) => parseFloat(x));
+        this.xAxis = xAxis;
+        this.yAxis = yAxis;
+        this.maxX = 100;
+        this.minY = 0;
         this.maxY = niceMax(...arr, step);
         this.barHeights = this.data.map((x) => Number(x / this.maxY) * this.height);
         this.barWidth = this.width / arr.length;
+
+        this.paddingScale = padding;
+
     }
     yLines(svg = document.getElementById("vector")) {
         let lines = [];

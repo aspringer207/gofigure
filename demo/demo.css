@@ -1,0 +1,18 @@
+:root{
+    --alizarin: #f1948a;
+    --wisteria: #bb8fce;
+    --peter: #85c1e9;
+    --turquoise: #a3e4d7;
+    --emerald: #82e0aa;
+    --sunflower: #f9e79f;
+    --carrot: #f0b27a;
+
+
+}
+
+body{
+    background-color: #404040;
+}
+h1, h2, h3, p{
+    font-family: "Jost", "Helvetica", sans-serif;
+}

@@ -1,4 +1,4 @@
-const defs = require("./functions.cjs")
+const {defs} = require("./functions.cjs")
 
 // Creates an SVG 'defs' element successfully
 it('should create an SVG "defs" element when called', () => {
