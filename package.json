@@ -26,11 +26,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "parcel": "^2.12.0",
     "prettier": "^3.3.3",
-    "semver": "^7.6.3"
-  },
-  "dependencies": {
+    "semver": "^7.6.3",
     "@babel/core": "^7.25.8",
-    "@babel/preset-env": "^7.25.8",
-    "save-dev": "^0.0.1-security"
+    "@babel/preset-env": "^7.25.8"
   }
 }
