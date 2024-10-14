@@ -1,17 +1,5 @@
+import posAll from "./functions/posall";
 
-import { GoFigure, GoFigureBar } from "./classes/gofigure";
-import { GoFigureOptions } from "./classes/gofigureoptions";
-import { attr, box, line, niceMax, optionMap, scale, vector } from "./functions"
-
-export {
-    GoFigure,
-    GoFigureBar,
-    GoFigureOptions,
-    attr,
-    box,
-    line,
-    optionMap,
-    niceMax,
-    scale,
-    vector
-}
+const positions = posAll();
+const positionStrings = positions.map((x)=> x[1]);
+const positionNumbers = positions.map((x)=> x[0]);
